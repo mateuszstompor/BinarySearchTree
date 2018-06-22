@@ -1,9 +1,6 @@
 # BinarySearchTree
 a generic data structure written in pure C, uses macros 😂
 
-## Drawbacks
-You can declare variables of a specific type ONLY ONCE.
-
 ## Important
 You need to declare a macro which will be used by the BTS to compare elements.
 
@@ -16,7 +13,7 @@ In order to start using the code include single header as it is shown on the exa
 
 ```c
 
-#include "binary_tree.h"
+#include "binary_search_tree.h"
 
 typedef struct Point2D {
     float x;
@@ -28,33 +25,76 @@ typedef struct Point2D {
 // binary_tree_type
 // where "type" is the same as one which you provided
 
-binary_tree(int);
+binary_search_tree(int);
 
 // If you use custom type remember to typedef its name
 
-binary_tree(Point2D);
+binary_search_tree(Point2D);
 
 
 // Define how elements should be compared against each other
 // Use macro for that purpose, it has to follow pattern
 // binary_tree_type_is_greater
 
-#define binary_tree_int_is_greater(a, b) a > b
-#define binary_tree_Point2D_is_greater(a, b) a.x > b.x && a.y > b.y
+#define binary_search_tree_int_is_greater(a, b) a > b
+#define binary_search_tree_Point2D_is_greater(a, b) a.x > b.x
 
 int main() {
 
-    struct binary_tree_int * intTree;
-    binary_tree_alloc(int, intTree);
-    binary_tree_insert(int, intTree, 2);
-    binary_tree_release(int, intTree);
+    int v = 4;
+    struct binary_search_tree_int * intTree;
+    binary_search_tree_alloc(int, intTree);
+    binary_search_tree_insert(int, intTree, v);
+    binary_search_tree_release(int, intTree);
 
     Point2D p = {2.3f, 3.0f};
-    struct binary_tree_Point2D * point2DTree;
-    binary_tree_alloc(Point2D, point2DTree);
-    binary_tree_insert(Point2D, point2DTree, p);
-    binary_tree_release(Point2D, point2DTree);
+    struct binary_search_tree_Point2D * point2DTree;
+    binary_search_tree_alloc(Point2D, point2DTree);
+    binary_search_tree_insert(Point2D, point2DTree, p);
+    binary_search_tree_release(Point2D, point2DTree);
 
 }
+
+```
+
+## Traversal
+The tree provides a way to traverse its values.
+It uses concept of iterator but is implemented purely in procedural manner.
+It means that objects representing end or begin of tree cannot be generated on the fly.
+
+```c
+
+#include <stdio.h>
+#include "binary_search_tree.h"
+
+binary_search_tree(int);
+
+#define binary_search_tree_int_is_greater(a, b) a > b
+
+int main() {
+
+    struct binary_search_tree_int * intTree;
+    binary_search_tree_alloc(int, intTree);
+    binary_search_tree_insert(int, intTree, 2);
+    binary_search_tree_insert(int, intTree, 1);
+
+    struct binary_search_tree_iterator_int * it, *end;
+    binary_search_tree_iterator_alloc(int, it);
+    binary_search_tree_iterator_alloc(int, end);
+    binary_search_tree_begin(int, intTree, it);
+    binary_search_tree_end(int, intTree, end);
+
+
+    while (it->current != end->current) {
+        printf("%i\n", it->current->data);
+        binary_search_tree_iterator_next(int, it);
+    }
+
+    binary_search_tree_iterator_release(int, it);
+    binary_search_tree_iterator_release(int, end);
+    binary_search_tree_release(int, intTree);
+
+}
+
 
 ```
