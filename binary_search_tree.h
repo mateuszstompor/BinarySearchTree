@@ -21,10 +21,10 @@ extern "C" {
 //  ALLOC   -   there is no verification if the pointer which was passed to one of the functions is NULL
 //  RELEASE -   there is no verification if the pointer is different than null, pointer is not set to null after deallocation as well
 
-    
 #define usually(ptr) __builtin_expect(!!(ptr), 1)
+
 #define rarely(ptr) __builtin_expect(!!(ptr), 0)
-    
+
 // do not forget about data alignment
 #define binary_search_tree_node(T)\
 struct binary_search_tree_node_##T {\
@@ -61,7 +61,7 @@ struct binary_search_tree_iterator_##T {\
 })
 
 #define binary_search_tree_iterator_not_equal(T, lhs_ptr, rhs_ptr) lhs_ptr->current != rhs_ptr->current
-    
+
 #define binary_search_tree_iterator_equal(T, lhs_ptr, rhs_ptr) lhs_ptr->current == rhs_ptr->current
 
 #define binary_search_tree_iterator_next(T, iterator_ptr) ({\
@@ -78,14 +78,14 @@ struct binary_search_tree_iterator_##T {\
         }\
     }\
 })
-    
+
 #define binary_search_tree_iterator_release(T, iterator_ptr) ({\
     if(iterator_ptr) {\
         free(iterator_ptr);\
         iterator_ptr = NULL;\
     }\
 })
-    
+
 #define binary_search_tree(T)\
 binary_search_tree_node(T);\
 binary_search_tree_iterator(T);\
@@ -177,7 +177,7 @@ struct binary_search_tree_##T {\
 })\
 
 #define binary_search_tree_size(tree_ptr) tree_ptr->size
-    
+
 #define binary_search_tree_begin(T, tree_ptr, iterator_ptr) ({\
     iterator_ptr->current = tree_ptr->min;\
 })\
@@ -185,7 +185,7 @@ struct binary_search_tree_##T {\
 #define binary_search_tree_end(T, tree_ptr, iterator_ptr) ({\
     iterator_ptr->current = NULL;\
 })\
-    
+
 #ifdef __cplusplus
 }
 #endif
