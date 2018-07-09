@@ -27,15 +27,11 @@ jobs:
         - export CXX=/usr/bin/g++-8
 
         - sudo apt-get install -y git g++ make cmake
-        - git clone https://github.com/google/googletest.git
-        - cd googletest
-        - mkdir gbuild && cd gbuild && cmake .. && make
-        - cp -r googletest/include/gtest /usr/local/include
-        - cp gbuild/googlemock/gtest/lib*.a /usr/local/lib
-        - cp gbuild/googlemock/lib*.a /usr/local/lib
-        - make tests
+        - cmake .
+        - make
+        - ./tree_tests
 
-    - stage: Memory Check
+    - stage: Benchmark
       script:
         - sudo ln -s /usr/bin/gcc-8 /usr/local/bin/gcc
         - sudo ln -s /usr/bin/g++-8 /usr/local/bin/g++
@@ -45,6 +41,7 @@ jobs:
         - export CC=/usr/bin/gcc-8
         - export CXX=/usr/bin/g++-8
 
-        - sudo apt-get install googletest
-
-        - make mem_check
+        - sudo apt-get install -y git g++ make cmake
+        - cmake .
+        - make
+        - ./tree_bench
