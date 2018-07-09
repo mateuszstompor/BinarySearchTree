@@ -27,6 +27,8 @@ jobs:
         - export CXX=/usr/bin/g++-8
 
         - sudo apt-get install -y git g++ make cmake
+        - git submodule init
+        - git submodule update
         - cmake .
         - make
         - ./tree_tests
@@ -42,6 +44,8 @@ jobs:
         - export CXX=/usr/bin/g++-8
 
         - sudo apt-get install -y git g++ make cmake
+        - git submodule init
+        - git submodule update
         - cmake .
         - make
         - ./tree_bench
