@@ -102,12 +102,12 @@ int main() {
 
 ```
 
-## Running tests on your shown
+## Running tests on your own
 Docker is the only requirement. Build the image first
 ```
 docker build -f ./tests/Dockerfile -t bst-tests .
 ```
-And then run it
+And then run the container
 ```
-docker run bst-tests
+docker run --rm bst-tests
 ```
