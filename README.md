@@ -1,11 +1,13 @@
 # BinarySearchTree
-a generic data structure written in pure C, uses macros 😂
+[![Build Status](https://travis-ci.org/mateuszstompor/BinarySearchTree.svg?branch=master)](https://travis-ci.org/mateuszstompor/BinarySearchTree)
+A generic data structure written in pure C, uses macros 😂.
+It seems to me that using macros to achieve generic data structure is quite clean approach.
 
 ## Important
-You need to declare a macro which will be used by the BTS to compare elements.
+Before using the tree a macro with the type you want to store in the data structure must be declared.
 
 ## Recommendation
-If you wonder how does the code run I highly recommend reading an article from the link below.
+If you wonder how does the code work I highly recommend reading an article from the link below.
 https://gcc.gnu.org/onlinedocs/cpp/Macros.html
 
 ## Usage
