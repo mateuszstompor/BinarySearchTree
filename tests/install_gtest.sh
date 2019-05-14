@@ -7,3 +7,5 @@ cd build
 cmake ..
 make
 make install
+cd ../..
+rm -rf googletest

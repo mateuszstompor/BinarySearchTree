@@ -1,33 +1,11 @@
-dist: trusty
-sudo: require
-
-compiler: gcc
 language: cpp
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-
-    packages:
-      - gcc-8
-      - g++-8
-      - cmake
-      - git
-      - make
+services:
+  - docker
 
 jobs:
   include:
     - stage: Unit Tests
       script:
-        - sudo ln -s /usr/bin/gcc-8 /usr/local/bin/gcc
-        - sudo ln -s /usr/bin/g++-8 /usr/local/bin/g++
-
-        - export CC=/usr/bin/gcc-8
-        - export CXX=/usr/bin/g++-8
-
-        - sudo apt-get install -y git g++ make cmake
-        - ./tests/install_gtest.sh
-        - cmake .
-        - make
-        - ./tree_tests
+        - docker build -f ./tests/Dockerfile -t bst-tests .
+        - docker run bst-tests

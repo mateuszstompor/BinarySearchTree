@@ -1,5 +1,6 @@
 # BinarySearchTree
 [![Build Status](https://travis-ci.org/mateuszstompor/BinarySearchTree.svg?branch=master)](https://travis-ci.org/mateuszstompor/BinarySearchTree)
+</br>
 A generic data structure written in pure C, uses macros 😂.
 It seems to me that using macros to achieve generic data structure is quite clean approach.
 
@@ -99,4 +100,14 @@ int main() {
 }
 
 
+```
+
+## Running tests on your shown
+Docker is the only requirement. Build the image first
+```
+docker build -f ./tests/Dockerfile -t bst-tests .
+```
+And then run it
+```
+docker run bst-tests
 ```
