@@ -9,7 +9,7 @@
 #pragma once
 
 #include <gtest/gtest.h>
-#include "binary_search_tree.h"
+#include <binary_search_tree.h>
 
 struct TS {
     int a;
@@ -65,13 +65,13 @@ TEST (BinarySearchTreeTest, SizeInt) {
 class BinarySearchTreeTestFixture : public ::testing::Test {
 
 protected:
-    
+
     virtual void SetUp() {
         binary_search_tree_alloc(int, tree);
         binary_search_tree_iterator_alloc(int, i);
         binary_search_tree_iterator_alloc(int, k);
     }
-    
+
     virtual void TearDown() {
         binary_search_tree_release(int, tree);
         binary_search_tree_iterator_release(int, i);
@@ -81,7 +81,7 @@ protected:
     struct binary_search_tree_int * tree;
     struct binary_search_tree_iterator_int * i;
     struct binary_search_tree_iterator_int * k;
-    
+
 };
 
 TEST_F(BinarySearchTreeTestFixture, Iterator) {
