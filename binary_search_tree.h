@@ -1,7 +1,4 @@
 //
-//  binary_tree.h
-//  test_C
-//
 //  Created by Mateusz Stompór on 19/06/2018.
 //  Copyright © 2018 Mateusz Stompór. All rights reserved.
 //

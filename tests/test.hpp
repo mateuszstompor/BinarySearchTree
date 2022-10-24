@@ -1,7 +1,4 @@
 //
-//  test.hpp
-//  binary_search_tree_tests
-//
 //  Created by Mateusz Stompór on 29/06/2018.
 //  Copyright © 2018 Mateusz Stompór. All rights reserved.
 //

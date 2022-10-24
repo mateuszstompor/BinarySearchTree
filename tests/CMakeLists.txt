@@ -12,6 +12,6 @@ include_directories(${GTEST_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR})
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(tree_tests ${CMAKE_SOURCE_DIR}/test.cpp)
+add_executable(tests ${CMAKE_CURRENT_SOURCE_DIR}/test.cpp)
 
-target_link_libraries(tree_tests ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(tests ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
